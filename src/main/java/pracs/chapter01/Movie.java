@@ -31,7 +31,7 @@ public class Movie {
         this._priceCode = _priceCode;
     }
 
-    public String get_title() {
+    public String getTitle() {
         return _title;
     }
 
