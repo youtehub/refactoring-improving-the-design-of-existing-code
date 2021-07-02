@@ -1,14 +1,21 @@
 package pracs.chapter01;
 
 /**
- * 租赁类，顾客租赁一部影片
+ * 租赁类，表示某个顾客租了一部影片
  *
  * @author yyh
  */
 public class Rental {
 
+
+    /**
+     * 租赁的影片
+     */
     private Movie _movie;
 
+    /**
+     * 租赁天数
+     */
     private int _daysRented;
 
     public Rental() {

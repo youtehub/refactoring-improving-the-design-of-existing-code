@@ -1,26 +1,35 @@
 package pracs.chapter01;
 
 /**
- * 影片类，用于装电影数据
+ * 影片类，简单的纯数据类
  *
  * @author yyh
  */
 public class Movie {
 
     /**
-     * 用户为小孩，数量为2
+     * 儿童片,两部
      */
     public static final int CHILDRENS = 2;
 
     /**
-     * 规律
+     * 普通片
      */
     public static final int REGULAR = 0;
 
+    /**
+     * 新片
+     */
     public static final int NEW_RELEASE = 1;
 
+    /**
+     * 标题
+     */
     private String _title;
 
+    /**
+     * 价格
+     */
     private int _priceCode;
 
     public Movie() {
@@ -35,7 +44,7 @@ public class Movie {
         return _title;
     }
 
-    public void set_title(String _title) {
+    public void setTitle(String _title) {
         this._title = _title;
     }
 
@@ -43,7 +52,7 @@ public class Movie {
         return _priceCode;
     }
 
-    public void setPriceCode(int _priceCode) {
+    public void set_priceCode(int _priceCode) {
         this._priceCode = _priceCode;
     }
 }

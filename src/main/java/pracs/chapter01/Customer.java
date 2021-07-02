@@ -4,14 +4,20 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 /**
- * 租赁类，顾客租赁一部影片
+ * 顾客类，拥有数据和相应的访问函数
  *
  * @author yyh
  */
 public class Customer {
 
+    /**
+     * 姓名
+     */
     private String _name;
 
+    /**
+     * 集合储存租赁的影片
+     */
     private Vector _rentals = new Vector();
 
     public Customer() {
@@ -25,18 +31,23 @@ public class Customer {
         return _name;
     }
 
+    public void setName(String name) {
+        this._name = name;
+    }
+
     /**
-     * 租赁一部影片,生成详单
+     * 添加需要租赁的影片
      *
-     * @param rental
+     * @param rental 租赁类
      */
     public void addRental(Rental rental) {
         _rentals.addElement(rental);
     }
 
-
     public String statement() {
+        //租赁费用
         double totalAmount = 0;
+        //积分
         int frequentRenterPoints = 0;
         Enumeration rentals = _rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
@@ -48,7 +59,7 @@ public class Customer {
                 case Movie.REGULAR:
                     thisAmount += 2;
                     if (each.getDaysRented() > 2) {
-                        thisAmount += 2;
+                        thisAmount += (each.getDaysRented() - 2) * 1.5;
                     }
                     break;
                 case Movie.NEW_RELEASE:
@@ -64,18 +75,19 @@ public class Customer {
             // add frequent renter points
             frequentRenterPoints++;
             // add bonus for a two day new release rental
-            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                    && each.getDaysRented() > 1) {
+            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1) {
                 frequentRenterPoints++;
+                //show figures for this rental
+                result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
+                totalAmount += thisAmount;
             }
-            //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-            thisAmount += thisAmount;
+            //add footer lines
+            result += "Amount pwed is " + totalAmount + "\n"
+                    + "You earned " + frequentRenterPoints + " frequent renter points";
         }
-        //add footer lines
-        result += "Amount owed is " + totalAmount + "\n"
-                + "You earned " + frequentRenterPoints + "frequent renter points";
+
         return result;
     }
-
 }
+
+
