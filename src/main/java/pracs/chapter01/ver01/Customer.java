@@ -1,4 +1,4 @@
-package pracs.chapter01;
+package pracs.chapter01.ver01;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -49,6 +49,7 @@ public class Customer {
         double totalAmount = 0;
         //积分
         int frequentRenterPoints = 0;
+        //租赁影片集合
         Enumeration rentals = _rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
         while (rentals.hasMoreElements()) {
@@ -77,15 +78,14 @@ public class Customer {
             // add bonus for a two day new release rental
             if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1) {
                 frequentRenterPoints++;
-                //show figures for this rental
-                result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-                totalAmount += thisAmount;
             }
-            //add footer lines
-            result += "Amount pwed is " + totalAmount + "\n"
-                    + "You earned " + frequentRenterPoints + " frequent renter points";
+            //show figures for this rental
+            result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
+            totalAmount += thisAmount;
         }
-
+        //add footer lines
+        result += "Amount owed is " + totalAmount + "\n"
+                + "You earned " + frequentRenterPoints + " frequent renter points";
         return result;
     }
 }

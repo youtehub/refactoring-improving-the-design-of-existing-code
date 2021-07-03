@@ -1,4 +1,4 @@
-package pracs.chapter01;
+package pracs.chapter01.ver01;
 
 /**
  * 租赁类，表示某个顾客租了一部影片

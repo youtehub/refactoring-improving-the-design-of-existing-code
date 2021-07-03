@@ -1,4 +1,4 @@
-package pracs.chapter01;
+package pracs.chapter01.ver02;
 
 /**
  * 影片类，简单的纯数据类
@@ -8,17 +8,17 @@ package pracs.chapter01;
 public class Movie {
 
     /**
-     * 儿童片,两部
+     * 儿童片价格
      */
     public static final int CHILDRENS = 2;
 
     /**
-     * 普通片
+     * 普通片价格
      */
     public static final int REGULAR = 0;
 
     /**
-     * 新片
+     * 新片价格
      */
     public static final int NEW_RELEASE = 1;
 
